@@ -1,3 +1,15 @@
+# Subfolders are separate repos (QuantTradingOS org); don't track them here
+orchestrator/
+qtos-core/
+Capital-Allocation-Agent/
+Capital-Guardian-Agent/
+Equity-Insider-Intelligence-Agent/
+Execution-Discipline-Agent/
+Market-Regime-Agent/
+Portfolio-Analyst-Agent/
+Sentiment-Shift-Alert-Agent/
+Trade-Journal-Coach-Agent/
+
 # Python
 __pycache__/
 *.py[cod]
