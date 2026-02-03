@@ -108,7 +108,8 @@ data-ingestion-service/
 │   └── client.py            # Database client (SQLAlchemy or asyncpg)
 ├── config/
 │   └── env.example          # DATABASE_URL, FINNHUB_API_KEY, etc.
-├── docker-compose.yml       # PostgreSQL + TimescaleDB
+├── Dockerfile               # Build image for API (migrations at startup in full-stack compose)
+├── docker-compose.yml       # PostgreSQL + TimescaleDB only
 ├── requirements.txt
 └── README.md
 ```
@@ -119,6 +120,10 @@ data-ingestion-service/
 - **PostgreSQL** with TimescaleDB extension
 - **pandas**, **yfinance**, **fastapi**, **uvicorn**, **apscheduler**, **sqlalchemy** (or **asyncpg**)
 - **Finnhub** API key (for news/insider)
+
+## Docker and full-stack deploy
+
+- **This repo:** `docker build -t qtos-data-service .` then run with `DATABASE_URL` set. Or use **orchestrator**'s full-stack compose: from workspace root, `docker-compose -f orchestrator/docker-compose.full.yml up --build` brings up PostgreSQL + data-service + orchestrator in one go (see [orchestrator README](https://github.com/QuantTradingOS/orchestrator) "Full-stack one-command deploy").
 
 ## Status
 

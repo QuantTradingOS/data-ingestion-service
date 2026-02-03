@@ -17,15 +17,17 @@ def run_migrations() -> None:
     schema_path = Path(__file__).parent / "schema.sql"
     if not schema_path.exists():
         raise FileNotFoundError(f"Schema file not found: {schema_path}")
-    
+
     engine = create_engine(get_db_url())
     schema_sql = schema_path.read_text()
-    
+
     LOG.info("Running migrations from %s", schema_path)
-    with engine.connect() as conn:
-        # Execute schema.sql (may contain multiple statements)
-        conn.execute(text(schema_sql))
-        conn.commit()
+    # Run each statement separately (psycopg2 runs one at a time)
+    statements = [s.strip() for s in schema_sql.split(";") if s.strip()]
+    with engine.begin() as conn:
+        for stmt in statements:
+            if stmt:
+                conn.execute(text(stmt + ";"))
     LOG.info("Migrations completed")
 
 
