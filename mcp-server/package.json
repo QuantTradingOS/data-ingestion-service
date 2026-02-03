@@ -1,0 +1,23 @@
+{
+  "name": "quant-trading-mcp-server",
+  "version": "1.0.0",
+  "description": "Safety-First MCP server with DeterministicGuardrails for investment management",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": { "quant-mcp": "./build/index.js" },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc --watch"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "files": ["build"]
+}

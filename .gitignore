@@ -1,7 +1,6 @@
 # Subfolders are separate repos (QuantTradingOS org); don't track them here
 orchestrator/
 qtos-core/
-mcp-server/
 chatbot/
 Capital-Allocation-Agent/
 Capital-Guardian-Agent/

@@ -1,0 +1,7 @@
+# QuantTradingOS MCP Server — AI-facing tools that call orchestrator and data service
+mcp>=1.0.0
+requests>=2.28.0
+anyio>=4.0.0
+# For SSE transport (optional)
+uvicorn[standard]>=0.24.0
+starlette>=0.35.0
