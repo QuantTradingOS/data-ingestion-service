@@ -20,10 +20,14 @@ This directory is a **local workspace** that holds multiple projects under the [
 3. **Per-project context.**  
    Some projects have a `CONTEXT.md` (e.g. `orchestrator/CONTEXT.md`) with repo identity and commit rules for that repo. Check it before committing in that project.
 
+4. **Org profile README (what others see).**  
+   To update what visitors see on [github.com/QuantTradingOS](https://github.com/QuantTradingOS) (project status, repository map, getting started, etc.), edit **`.github-repo/profile/README.md`**. Commit and push from **`.github-repo/`** (that folder is the QuantTradingOS/.github repo). The file at `.github-repo/profile/README.md` is the source of truth for the org profile; copy it to the root `README.md` of the `.github` repo when you want the live profile to reflect your changes (or keep profile content in `profile/README.md` and use it as the org profile README per GitHub’s convention).
+
 ## Projects in this workspace
 
 | Folder | GitHub repo (typical) | Notes |
 |--------|------------------------|--------|
+| `.github-repo/` | QuantTradingOS/.github | Org profile. **Update `.github-repo/profile/README.md`** for others to see status, repo map, getting started. Commit from `.github-repo/`. |
 | `orchestrator/` | QuantTradingOS/orchestrator | See `orchestrator/CONTEXT.md` |
 | `qtos-core/` | QuantTradingOS/qtos-core | Core engine, backtesting, execution |
 | `Market-Regime-Agent/` | QuantTradingOS/Market-Regime-Agent | Regime detection |
