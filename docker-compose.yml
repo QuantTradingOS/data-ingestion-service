@@ -1,0 +1,23 @@
+# PostgreSQL + TimescaleDB for QuantTradingOS data pipeline
+# Run: docker-compose up -d postgres
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: qtos-data-postgres
+    environment:
+      POSTGRES_USER: qtos_user
+      POSTGRES_PASSWORD: qtos_password
+      POSTGRES_DB: qtos_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qtos_user -d qtos_data"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
