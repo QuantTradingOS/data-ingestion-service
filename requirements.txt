@@ -3,6 +3,7 @@ pandas>=1.5.0
 numpy>=1.22
 yfinance>=0.2.0
 requests>=2.28.0
+finnhub-python>=1.0.0
 
 # FastAPI + Swagger
 fastapi>=0.100.0
@@ -11,10 +12,11 @@ uvicorn[standard]>=0.22.0
 # Scheduling
 apscheduler>=3.10.0
 
-# Database (PostgreSQL + TimescaleDB)
+# Database (PostgreSQL / Supabase + pgvector)
 sqlalchemy>=2.0.0
 psycopg2-binary>=2.9.0
-# Or asyncpg>=0.28.0 for async
+pgvector>=0.2.0
+python-dotenv>=1.0.0
 
-# Optional: TimescaleDB helpers
-# timescaledb (if using TimescaleDB Python client)
+# Embeddings for skill graph indexer
+openai>=1.0.0

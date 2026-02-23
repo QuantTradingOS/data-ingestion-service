@@ -1,1 +1,1 @@
-"""Database client and schema."""
+# QuantTradingOS shared database utilities (Supabase / PostgreSQL + pgvector)

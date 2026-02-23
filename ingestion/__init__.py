@@ -1,1 +1,1 @@
-"""Data ingestion modules."""
+# QuantTradingOS data ingestion pipelines (prices, news, insider)
