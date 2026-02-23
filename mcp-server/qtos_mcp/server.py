@@ -203,6 +203,19 @@ def _create_app() -> Server:
                     },
                 },
             ),
+            types.Tool(
+                name="traverse_skill_graph",
+                description="Query the QuantTradingOS skill graph for relevant knowledge nodes given a task context.",
+                inputSchema={
+                    "type": "object",
+                    "required": ["task_context"],
+                    "properties": {
+                        "task_context": {"type": "string", "description": "Natural language description of what you need to know"},
+                        "agent_name": {"type": "string", "description": "Optional — filter to a specific agent's knowledge (e.g. Market-Regime-Agent)"},
+                        "top_k": {"type": "integer", "description": "Number of nodes to return", "default": 5},
+                    },
+                },
+            ),
         ]
 
     @app.call_tool()
@@ -228,6 +241,14 @@ def _create_app() -> Server:
                 execution_score=float(args.get("execution_score", 0.88)),
                 include_guardian=bool(args.get("include_guardian", False)),
             )
+        if name == "traverse_skill_graph":
+            from qtos_mcp.skill_graph_tool import traverse_skill_graph_tool
+            out = traverse_skill_graph_tool(
+                task_context=args["task_context"],
+                agent_name=args.get("agent_name"),
+                top_k=int(args.get("top_k", 5)),
+            )
+            return _text(out)
         raise ValueError(f"Unknown tool: {name}")
 
     return app
